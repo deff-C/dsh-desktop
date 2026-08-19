@@ -1,4 +1,4 @@
-# DSH Desktop Launcher
+﻿# DSH Desktop Launcher
 # 1) Opens a splash window immediately (perceived instant startup).
 # 2) Reuses one persistent Edge profile (warm start, no leftover profiles).
 # Single-instance: the first launch owns the server; later launches reuse it.
