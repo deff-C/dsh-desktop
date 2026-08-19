@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek Harness</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #0f1115;
+    color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  .logo {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #4d6bfe, #2f4ad0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 22px;
+  }
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(255,255,255,0.14);
+    border-top-color: #4d6bfe;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 18px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .hint { font-size: 14px; color: #8a8f98; }
+  .hint.alt { margin-top: 8px; font-size: 12px; color: #5b6067; }
+</style>
+</head>
+<body>
+  <div class="logo">DSH</div>
+  <div class="spinner"></div>
+  <div class="hint" id="hint">正在启动 DeepSeek Harness…</div>
+  <div class="hint alt" id="alt"></div>
+<script>
+(function () {
+  var port = parseInt(new URLSearchParams(location.search).get("port"), 10);
+  if (!port) { port = 3081; }
+  var TARGET = "http://127.0.0.1:" + port + "/";
+  var tries = 0;
+
+  function go() { window.location.replace(TARGET); }
+
+  function poll() {
+    tries++;
+    if (tries > 60) {
+      document.getElementById("hint").textContent = "启动时间较长，请稍候…";
+    }
+    var img = new Image();
+    img.onload = go;
+    img.onerror = function () { setTimeout(poll, 400); };
+    img.src = TARGET + "favicon.svg?_=" + Date.now();
+  }
+
+  // Kick off after the page is painted so the spinner is visible first.
+  window.addEventListener("load", function () { setTimeout(poll, 150); });
+})();
+</script>
+</body>
+</html>

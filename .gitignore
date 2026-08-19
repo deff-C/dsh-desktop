@@ -1,0 +1,16 @@
+# bundled app (built by scripts/build.ps1)
+app/
+
+# runtime state
+runtime/
+logs/
+
+# Node / npm
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# OS cruft
+.DS_Store
+Thumbs.db
+Desktop.ini

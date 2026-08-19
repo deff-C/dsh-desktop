@@ -1,0 +1,21 @@
+{
+  "name": "dsh-desktop",
+  "version": "1.0.0",
+  "description": "Launch the DeepSeek Harness (DSH) web app as a desktop window on Windows",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "desktop",
+    "windows",
+    "launcher"
+  ],
+  "scripts": {
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build.ps1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
