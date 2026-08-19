@@ -1,4 +1,4 @@
-# Generates D:\DSH\icon.ico — a simple DeepSeek-blue rounded "DSH" app icon.
+﻿# Generates D:\DSH\icon.ico — a simple DeepSeek-blue rounded "DSH" app icon.
 Add-Type -AssemblyName System.Drawing
 
 $outIco = Join-Path (Split-Path -Parent $PSScriptRoot) 'icon.ico'
